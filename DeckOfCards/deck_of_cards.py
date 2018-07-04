@@ -73,5 +73,10 @@ class Deck:
 
 c=Deck()
 #print(c._deal(5))
-print(c.shuffle())
-print(c.cards)
+print("shuffle cards:",c.shuffle())
+card=c.deal_card()
+print("deal card:",card)
+hand=c.deal_hand(6)
+print("deal hand: ",hand)
+print("Card left:",c.count(),"\n ",c.cards)
+
