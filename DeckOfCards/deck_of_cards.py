@@ -64,7 +64,7 @@ class Deck:
 
 	def shuffle(self):
 		pass
-		if self.count<52:
+		if self.count()<52:
 			pass
 			raise ValueError("Only full decks can be shuffled")
 		shuffle(self.cards)
@@ -74,4 +74,4 @@ class Deck:
 c=Deck()
 #print(c._deal(5))
 print(c.shuffle())
-print(c.cards())
+print(c.cards)
