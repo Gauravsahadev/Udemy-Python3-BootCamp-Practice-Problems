@@ -3,16 +3,18 @@ from random import shuffle
 # Each instance of Card  should have a value ("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K").
 # Card 's __repr__  method should return the card's value and suit (e.g. "A of Clubs", "J of Diamonds", etc.)
 
-class Card:
-	pass
-	def __init__(self,value,suit):
-		pass
-		self.value=value
-		self.suit=suit
 
-	def __repr__(self):
-		pass
-		return "{} of {} ".format(self.value,self.suit)
+class Card:
+    pass
+
+    def __init__(self, value, suit):
+        pass
+        self.value = value
+        self.suit = suit
+
+    def __repr__(self):
+        pass
+        return "{} of {} ".format(self.value, self.suit)
 
 # Each instance of Deck  should have a cards attribute with all 52 possible instances of Card .
 # Deck  should have an instance method called count  which returns a count of how many cards remain in the deck.
@@ -22,61 +24,63 @@ class Card:
 # Deck  should have an instance method called deal_card  which uses the _deal  method to deal a single card from the deck and return that single card.
 # Deck  should have an instance method called deal_hand  which accepts a number and uses the _deal  method to deal a list of cards from the deck and return that list of cards.
 
+
 class Deck:
-	pass
-	def __init__(self):
-		pass
-		suits=["Hearts","Diamonds","Clubs","Spades"]
-		values=["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-	#List Comprehension:	
-		self.cards=[Card(value,suit) for suit in suits for value in values]
+    pass
 
-	#Loop way:
-		# for suit in suits:
-		# 	for value in values:
-		# 		self.cards.append(Card(value,suit))
+    def __init__(self):
+        pass
+        suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+        values = ["A", "2", "3", "4", "5", "6",
+                  "7", "8", "9", "10", "J", "Q", "K"]
+    # List Comprehension:
+        self.cards = [Card(value, suit) for suit in suits for value in values]
 
-	def __repr__(self):
-		pass
-		return "Deck of {} cards".format(self.count())
+    # Loop way:
+        # for suit in suits:
+        # 	for value in values:
+        # 		self.cards.append(Card(value,suit))
 
-	def count(self):
-			pass
-			return len(self.cards)
+    def __repr__(self):
+        pass
+        return "Deck of {} cards".format(self.count())
 
-	def _deal(self,num):
-		pass
-		count=self.count()
-		actual=min([count,num])
-		if count==0:
-			raise ValueError("All cards have been dealt")
-		cards=self.cards[-actual:]
-		self.cards=self.cards[:-actual]
-		return cards
+    def count(self):
+        pass
+        return len(self.cards)
 
-	def deal_card(self):
-		pass
-		return self._deal(1)[0]
+    def _deal(self, num):
+        pass
+        count = self.count()
+        actual = min([count, num])
+        if count == 0:
+            raise ValueError("All cards have been dealt")
+        cards = self.cards[-actual:]
+        self.cards = self.cards[:-actual]
+        return cards
 
-	def deal_hand(self,hand_size):
-		pass
-		return self._deal(hand_size)
+    def deal_card(self):
+        pass
+        return self._deal(1)[0]
 
-	def shuffle(self):
-		pass
-		if self.count()<52:
-			pass
-			raise ValueError("Only full decks can be shuffled")
-		shuffle(self.cards)
-		return self
+    def deal_hand(self, hand_size):
+        pass
+        return self._deal(hand_size)
+
+    def shuffle(self):
+        pass
+        if self.count() < 52:
+            pass
+            raise ValueError("Only full decks can be shuffled")
+        shuffle(self.cards)
+        return self
 
 
-c=Deck()
-#print(c._deal(5))
-print("shuffle cards:",c.shuffle())
-card=c.deal_card()
-print("deal card:",card)
-hand=c.deal_hand(6)
-print("deal hand: ",hand)
-print("Card left:",c.count(),"\n ",c.cards)
-
+c = Deck()
+# print(c._deal(5))
+print("shuffle cards:", c.shuffle())
+card = c.deal_card()
+print("deal card:", card)
+hand = c.deal_hand(6)
+print("deal hand: ", hand)
+print("Card left:", c.count(), "\n ", c.cards)
