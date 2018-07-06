@@ -1,3 +1,4 @@
+#inheritance example
 class User:
 	pass
 	active_user=0
